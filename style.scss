@@ -1,0 +1,252 @@
+// lear
+// Room Landing Page
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
+}
+
+// Colors
+$darkGray: hsl(0, 0%, 63%);
+$veryDarkGray: hsl(0, 0%, 27%);
+$black: hsl(0, 0%, 0%);
+$white: hsl(0, 0%, 100%);
+
+// Container
+.container {
+  display: grid;
+  overflow: hidden;
+
+  .text {
+    color: $darkGray;
+    line-height: 1.5rem;
+  }
+
+  .nav-bar {
+    position: absolute;
+    padding: 3.5% 5%;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    z-index: 2;
+
+    .show-links-btn,
+    .hide-links-btn {
+      display: none;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      list-style: none;
+
+      li {
+        display: inline-block;
+
+        &::after {
+          content: "";
+          width: 0;
+          height: 2px;
+          background-color: $white;
+          display: block;
+          transition: 0.5s;
+          -webkit-transition: 0.5s;
+          -moz-transition: 0.5s;
+          -ms-transition: 0.5s;
+          -o-transition: 0.5s;
+          margin: auto;
+        }
+
+        &:hover::after {
+          width: 60%;
+        }
+
+        a {
+          text-decoration: none;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .top-section {
+    display: flex;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+
+    .top-item {
+      display: flex;
+      grid-template-columns: min-content;
+      height: 65vh;
+      max-width: 100vw;
+
+      .top-img {
+        width: 50vw;
+        object-fit: cover;
+      }
+
+      .top-text {
+        position: relative;
+        padding: 5rem;
+        width: 50vw;
+
+        .top-heading {
+          font-size: 3rem;
+          font-weight: 700;
+          color: $black;
+          margin-bottom: 1rem;
+        }
+
+        .icon-arrow {
+          display: inline-block;
+          text-decoration: none;
+          color: $black;
+          text-transform: uppercase;
+          letter-spacing: 10px;
+          margin-top: 1rem;
+
+          &:hover {
+            color: $darkGray;
+          }
+        }
+
+        .btns {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          display: flex;
+          align-items: center;
+
+          .left-btn,
+          .right-btn {
+            background-color: $black;
+            border: none;
+            cursor: pointer;
+            padding: 1.75rem 2.25rem;
+
+            &:hover {
+              background-color: $veryDarkGray;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .bottom-section {
+    display: flex;
+    height: 35vh;
+
+    img {
+      width: 30vw;
+    }
+
+    .bottom-text {
+      width: 40vw;
+      padding: 3rem;
+
+      .bottom-heading {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+// For Smaller Devices
+@media screen and (max-width: 1162px) {
+  .top-text {
+    padding: 4rem !important;
+
+    .top-heading {
+      font-size: 2.5rem !important;
+    }
+  }
+
+  .bottom-text {
+    padding: 2rem !important;
+
+    .bottom-heading {
+      margin-bottom: 0.5rem !important;
+    }
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .container {
+    text-align: center;
+  }
+
+  .top-item,
+  .bottom-section {
+    flex-direction: column;
+    height: 100% !important;
+
+    .top-text {
+      width: auto !important;
+    }
+
+    .top-img,
+    .bottom-img,
+    .bottom-text {
+      width: 100vw !important;
+    }
+
+    .icon-arrow {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .nav-bar {
+    padding: 7.5% !important;
+    justify-content: space-between;
+    width: 100%;
+
+    .links {
+      position: absolute;
+      width: 100%;
+      background-color: $white;
+      left: 0;
+      top: -25vh;
+      gap: 2rem !important;
+      padding: 2rem 1rem;
+      justify-content: space-evenly;
+      transition: 0.5s;
+      -webkit-transition: 0.5s;
+      -moz-transition: 0.5s;
+      -ms-transition: 0.5s;
+      -o-transition: 0.5s;
+
+      li::after {
+        background-color: $black !important;
+      }
+
+      a {
+        color: $black !important;
+      }
+
+      &.active {
+        top: 0;
+      }
+    }
+
+    .show-links-btn,
+    .hide-links-btn {
+      display: block !important;
+      cursor: pointer;
+    }
+  }
+
+  .container .top-section .top-item .top-text {
+    height: 100%;
+  }
+}
